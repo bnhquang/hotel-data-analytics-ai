@@ -1,101 +1,425 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+import {
+    Menu,
+    BarChart,
+    PieChart,
+    LineChart,
+    ScatterChart,
+    Activity,
+    Settings,
+    HelpCircle,
+} from "lucide-react";
+import Link from "next/link";
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+import { Button } from "@/components/ui/button";
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardHeader,
+    CardTitle,
+} from "@/components/ui/card";
+import HouseCountryOfGuests from "@/components/charts/HouseCountryOfGuests";
+import AverageGuestPerMonth from "@/components/charts/AverageGuestPerMonth";
+import LengthOfStay from "@/components/charts/LengthOfStay";
+import BoxPlotDistributionOfADR from "@/components/charts/BoxPlotDistributionOfADR";
+import SunburstChart from "@/components/charts/SunburstChart";
+import AveragePriceByMonth from "@/components/charts/AveragePriceByMonth";
+import { useState } from "react";
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog";
+
+export default function Dashboard() {
+    const [showPieChart, setShowPieChart] = useState(true);
+    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen1, setIsOpen1] = useState(false);
+    const [isOpen2, setIsOpen2] = useState(false);
+    const [isOpen3, setIsOpen3] = useState(false);
+    const [isOpen4, setIsOpen4] = useState(false);
+    const [isOpen5, setIsOpen5] = useState(false);
+    const [isOpen6, setIsOpen6] = useState(false);
+    const [isOpen7, setIsOpen7] = useState(false);
+    const [isOpen8, setIsOpen8] = useState(false);
+
+    return (
+        <div className="flex h-screen bg-gray-100 dark:bg-gray-900">
+            {/* Sidebar */}
+            <aside className="w-64 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700">
+                <div className="p-4">
+                    <h2 className="text-2xl font-semibold text-gray-800 dark:text-white">
+                        Analytics Dashboard
+                    </h2>
+                </div>
+                <nav className="mt-4">
+                    <Link
+                        className="flex items-center px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+                        href="#"
+                    >
+                        <BarChart className="mr-3 h-5 w-5" />
+                        Chart 1
+                    </Link>
+                    <Link
+                        className="flex items-center px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+                        href="#"
+                    >
+                        <PieChart className="mr-3 h-5 w-5" />
+                        Chart 2
+                    </Link>
+                    <Link
+                        className="flex items-center px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+                        href="#"
+                    >
+                        <LineChart className="mr-3 h-5 w-5" />
+                        Chart 3
+                    </Link>
+                    <Link
+                        className="flex items-center px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+                        href="#"
+                    >
+                        <ScatterChart className="mr-3 h-5 w-5" />
+                        Chart 4
+                    </Link>
+                </nav>
+            </aside>
+
+            {/* Main content */}
+            <div className="flex-1 flex flex-col overflow-hidden">
+                {/* Header */}
+                <header className="flex items-center justify-between p-4 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+                    <Button variant="outline" size="icon">
+                        <Menu className="h-4 w-4" />
+                        <span className="sr-only">Toggle menu</span>
+                    </Button>
+                    <div className="flex items-center space-x-2">
+                        <Button variant="outline" size="icon">
+                            <Activity className="h-4 w-4" />
+                            <span className="sr-only">Activity</span>
+                        </Button>
+                        <Button variant="outline" size="icon">
+                            <HelpCircle className="h-4 w-4" />
+                            <span className="sr-only">Help</span>
+                        </Button>
+                        <DropdownMenu>
+                            <DropdownMenuTrigger asChild>
+                                <Button variant="outline" size="icon">
+                                    <Settings className="h-4 w-4" />
+                                    <span className="sr-only">Settings</span>
+                                </Button>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent align="end">
+                                <DropdownMenuLabel>Settings</DropdownMenuLabel>
+                                <DropdownMenuSeparator />
+                                <DropdownMenuItem>Profile</DropdownMenuItem>
+                                <DropdownMenuItem>Preferences</DropdownMenuItem>
+                                <DropdownMenuItem>Logout</DropdownMenuItem>
+                            </DropdownMenuContent>
+                        </DropdownMenu>
+                    </div>
+                </header>
+
+                <main className="flex-1 overflow-x-hidden overflow-y-auto p-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
+                        <Card>
+                            <CardHeader>
+                                <div className="flex items-center justify-between">
+                                    <div className="flex flex-col">
+                                        <CardTitle>
+                                            Home Country of Guests
+                                        </CardTitle>
+                                        <CardDescription>
+                                            Switch between Pie Chart and Treemap
+                                        </CardDescription>
+                                    </div>
+                                    <Dialog
+                                        open={isOpen1}
+                                        onOpenChange={setIsOpen1}
+                                    >
+                                        <DialogTrigger asChild>
+                                            <Button variant="default">
+                                                Interpretation
+                                            </Button>
+                                        </DialogTrigger>
+                                        <DialogContent className="sm:max-w-[425px] md:max-w-[700px] lg:max-w-[900px]">
+                                            <DialogHeader>
+                                                <DialogTitle>
+                                                    Personal Interpretation
+                                                </DialogTitle>
+                                            </DialogHeader>
+                                            <div className="grid gap-4 py-4">
+                                                <p>
+                                                    This is the main content
+                                                    area of the dialog. You can
+                                                    add any components or
+                                                    content here.
+                                                </p>
+                                                <p>
+                                                    For example, you could
+                                                    include forms, tables, or
+                                                    any other complex UI
+                                                    elements.
+                                                </p>
+                                            </div>
+                                            <div className="flex justify-end">
+                                                <Button
+                                                    variant="outline"
+                                                    onClick={() =>
+                                                        setIsOpen1(false)
+                                                    }
+                                                >
+                                                    Close
+                                                </Button>
+                                            </div>
+                                        </DialogContent>
+                                    </Dialog>
+                                </div>
+                            </CardHeader>
+                            <CardContent className="h-[500px]">
+                                <HouseCountryOfGuests
+                                    showPieChart={showPieChart}
+                                />
+                            </CardContent>
+                        </Card>
+                        <Card>
+                            <CardHeader>
+                                <div className="flex items-center justify-between">
+                                    <CardTitle>
+                                        Sunburst Chart of Market Segment,
+                                        Reservation Status and Customer Type
+                                    </CardTitle>
+                                    <Dialog
+                                        open={isOpen}
+                                        onOpenChange={setIsOpen}
+                                    >
+                                        <DialogTrigger asChild>
+                                            <Button variant="default">
+                                                Interpretation
+                                            </Button>
+                                        </DialogTrigger>
+                                        <DialogContent className="sm:max-w-[425px] md:max-w-[700px] lg:max-w-[900px]">
+                                            <DialogHeader>
+                                                <DialogTitle>
+                                                    Personal Interpretation
+                                                </DialogTitle>
+                                            </DialogHeader>
+                                            <div className="grid gap-4 py-4">
+                                                <p>
+                                                    This is the main content
+                                                    area of the dialog. You can
+                                                    add any components or
+                                                    content here.
+                                                </p>
+                                                <p>
+                                                    For example, you could
+                                                    include forms, tables, or
+                                                    any other complex UI
+                                                    elements.
+                                                </p>
+                                            </div>
+                                            <div className="flex justify-end">
+                                                <Button
+                                                    variant="outline"
+                                                    onClick={() =>
+                                                        setIsOpen(false)
+                                                    }
+                                                >
+                                                    Close
+                                                </Button>
+                                            </div>
+                                        </DialogContent>
+                                    </Dialog>
+                                </div>
+                            </CardHeader>
+                            <CardContent className="h-[600px]">
+                                <SunburstChart />
+                            </CardContent>
+                        </Card>
+
+                        <Card>
+                            <CardHeader>
+                                <div className="flex items-center justify-between">
+                                    <CardTitle>
+                                        Average Number of Hotel Guests per Month
+                                    </CardTitle>
+                                    <Dialog
+                                        open={isOpen2}
+                                        onOpenChange={setIsOpen2}
+                                    >
+                                        <DialogTrigger asChild>
+                                            <Button variant="default">
+                                                Interpretation
+                                            </Button>
+                                        </DialogTrigger>
+                                        <DialogContent className="sm:max-w-[425px] md:max-w-[700px] lg:max-w-[900px]">
+                                            <DialogHeader>
+                                                <DialogTitle>
+                                                    Personal Interpretation
+                                                </DialogTitle>
+                                            </DialogHeader>
+                                            <div className="grid gap-4 py-4">
+                                                <p>
+                                                    This is the main content
+                                                    area of the dialog. You can
+                                                    add any components or
+                                                    content here.
+                                                </p>
+                                                <p>
+                                                    For example, you could
+                                                    include forms, tables, or
+                                                    any other complex UI
+                                                    elements.
+                                                </p>
+                                            </div>
+                                            <div className="flex justify-end">
+                                                <Button
+                                                    variant="outline"
+                                                    onClick={() =>
+                                                        setIsOpen2(false)
+                                                    }
+                                                >
+                                                    Close
+                                                </Button>
+                                            </div>
+                                        </DialogContent>
+                                    </Dialog>
+                                </div>{" "}
+                            </CardHeader>
+                            <CardContent className="h-[400px]">
+                                <AverageGuestPerMonth />
+                            </CardContent>
+                        </Card>
+                        <Card>
+                            <CardHeader>
+                                <div className="flex items-center justify-between">
+                                    <CardTitle>
+                                        Room Price per Night and per Person by
+                                        Month{" "}
+                                    </CardTitle>
+                                    <Dialog
+                                        open={isOpen3}
+                                        onOpenChange={setIsOpen3}
+                                    >
+                                        <DialogTrigger asChild>
+                                            <Button variant="default">
+                                                Interpretation
+                                            </Button>
+                                        </DialogTrigger>
+                                        <DialogContent className="sm:max-w-[425px] md:max-w-[700px] lg:max-w-[900px]">
+                                            <DialogHeader>
+                                                <DialogTitle>
+                                                    Personal Interpretation
+                                                </DialogTitle>
+                                            </DialogHeader>
+                                            <div className="grid gap-4 py-4">
+                                                <p>
+                                                    This is the main content
+                                                    area of the dialog. You can
+                                                    add any components or
+                                                    content here.
+                                                </p>
+                                                <p>
+                                                    For example, you could
+                                                    include forms, tables, or
+                                                    any other complex UI
+                                                    elements.
+                                                </p>
+                                            </div>
+                                            <div className="flex justify-end">
+                                                <Button
+                                                    variant="outline"
+                                                    onClick={() =>
+                                                        setIsOpen3(false)
+                                                    }
+                                                >
+                                                    Close
+                                                </Button>
+                                            </div>
+                                        </DialogContent>
+                                    </Dialog>
+                                </div>
+                            </CardHeader>
+                            <CardContent className="h-[400px]">
+                                <AveragePriceByMonth />
+                            </CardContent>
+                        </Card>
+                        <Card className="col-span-1 md:col-span-2 lg:col-span-2">
+                            <CardHeader>
+                                <div className="flex items-center justify-between">
+                                    <CardTitle>
+                                        Length of Stay By Month{" "}
+                                    </CardTitle>
+                                    <Dialog
+                                        open={isOpen4}
+                                        onOpenChange={setIsOpen4}
+                                    >
+                                        <DialogTrigger asChild>
+                                            <Button variant="default">
+                                                Interpretation
+                                            </Button>
+                                        </DialogTrigger>
+                                        <DialogContent className="sm:max-w-[425px] md:max-w-[700px] lg:max-w-[900px]">
+                                            <DialogHeader>
+                                                <DialogTitle>
+                                                    Personal Interpretation
+                                                </DialogTitle>
+                                            </DialogHeader>
+                                            <div className="grid gap-4 py-4">
+                                                <p>
+                                                    This is the main content
+                                                    area of the dialog. You can
+                                                    add any components or
+                                                    content here.
+                                                </p>
+                                                <p>
+                                                    For example, you could
+                                                    include forms, tables, or
+                                                    any other complex UI
+                                                    elements.
+                                                </p>
+                                            </div>
+                                            <div className="flex justify-end">
+                                                <Button
+                                                    variant="outline"
+                                                    onClick={() =>
+                                                        setIsOpen4(false)
+                                                    }
+                                                >
+                                                    Close
+                                                </Button>
+                                            </div>
+                                        </DialogContent>
+                                    </Dialog>
+                                </div>
+                            </CardHeader>
+                            <CardContent className="h-[400px]">
+                                <LengthOfStay />
+                            </CardContent>
+                        </Card>
+                        <Card className="col-span-1 md:col-span-2 lg:col-span-2">
+                            <CardHeader>
+                                <CardTitle>Distribution of ADR</CardTitle>
+                            </CardHeader>
+                            <CardContent className="h-[400px]">
+                                <BoxPlotDistributionOfADR />
+                            </CardContent>
+                        </Card>
+                    </div>
+                </main>
+            </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+    );
 }
