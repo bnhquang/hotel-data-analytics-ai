@@ -85,6 +85,17 @@ const BoxPlotDistributionOfADR: React.FC = () => {
                 axisPointer: {
                     type: "shadow",
                 },
+                formatter: function (params) {
+                    const stats = params.data;
+                    return `
+                        <div><strong>${labels[params.dataIndex]}</strong></div>
+                        <div>Lower Fence: ${stats[1]}</div>
+                        <div>Q1 (25th percentile): ${stats[2]}</div>
+                        <div>Median (Q2): ${stats[3]}</div>
+                        <div>Q3 (75th percentile): ${stats[4]}</div>
+                        <div>Upper Fence: ${stats[5]}</div>
+                    `;
+                },
             },
             grid: {
                 left: "10%",
