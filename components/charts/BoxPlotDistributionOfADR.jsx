@@ -1,15 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as echarts from "echarts";
 
-const BoxPlotDistributionOfADR: React.FC = () => {
+const BoxPlotDistributionOfADR = () => {
     // Reference to the chart container
-    const chartRef = useRef<HTMLDivElement | null>(null);
-    interface DataItem {
-        adr: number;
-        marketSegment: string;
-    }
+    const chartRef = (useRef < HTMLDivElement) | (null > null);
 
-    const [data, setData] = useState<DataItem[]>([]);
+    const [data, setData] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -47,7 +43,7 @@ const BoxPlotDistributionOfADR: React.FC = () => {
         const myChart = echarts.init(chartRef.current);
 
         // Define the chart option
-        const option: echarts.EChartsOption = {
+        const option = {
             title: [
                 {
                     // text: "Michelson-Morley Experiment",
@@ -75,7 +71,7 @@ const BoxPlotDistributionOfADR: React.FC = () => {
                         type: "boxplot",
                         config: {
                             itemNameFormatter: function (params) {
-                                return labels[params.value];
+                                return labels[Number(params.value)];
                             },
                         },
                     },
