@@ -1,25 +1,5 @@
 "use client";
 
-import {
-    Menu,
-    BarChart,
-    PieChart,
-    LineChart,
-    ScatterChart,
-    Activity,
-    Settings,
-    HelpCircle,
-} from "lucide-react";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuLabel,
-    DropdownMenuSeparator,
-    DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useState } from "react";
 import HouseCountryOfGuests from "@/components/charts/HouseCountryOfGuests";
@@ -30,6 +10,7 @@ import SunburstChart from "@/components/charts/SunburstChart";
 import AveragePriceByMonth from "@/components/charts/AveragePriceByMonth";
 import InterpretationDialog from "@/components/InterpretationDialog";
 import interpretations from "@/public/chartInterpretations.json";
+import { Button } from "@/components/ui/button";
 
 export default function Dashboard() {
     const [showPieChart, setShowPieChart] = useState(true);
@@ -92,6 +73,28 @@ export default function Dashboard() {
                                     chartTitle={graph.title}
                                 />
                             </div>
+                            {graph.title === "Home Country of Guests" && (
+                                <div className="mt-2 flex space-x-2">
+                                    <Button
+                                        variant={
+                                            showPieChart ? "default" : "outline"
+                                        }
+                                        onClick={() => setShowPieChart(true)}
+                                    >
+                                        Pie Chart
+                                    </Button>
+                                    <Button
+                                        variant={
+                                            !showPieChart
+                                                ? "default"
+                                                : "outline"
+                                        }
+                                        onClick={() => setShowPieChart(false)}
+                                    >
+                                        Treemap
+                                    </Button>
+                                </div>
+                            )}
                         </CardHeader>
                         <CardContent
                             className={`${

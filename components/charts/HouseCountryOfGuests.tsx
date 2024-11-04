@@ -7,7 +7,6 @@ import {
     Tooltip,
     Treemap,
 } from "recharts";
-import { Button } from "../ui/button";
 
 const COLORS = [
     "#1D1310",
@@ -21,7 +20,7 @@ const COLORS = [
 ];
 
 const CustomizedContent = (props) => {
-    const { depth, x, y, width, height, name, value, index } = props;
+    const { depth, x, y, width, height, name } = props;
 
     return (
         <g>

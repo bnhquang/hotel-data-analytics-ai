@@ -70,7 +70,7 @@ function InterpretationDialog({
         };
 
         fetchData();
-    }, []);
+    }, [endPoint]);
 
     const handleGetRecommendation = async () => {
         const dataString = Array.isArray(data)

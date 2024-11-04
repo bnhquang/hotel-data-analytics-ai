@@ -61,17 +61,6 @@ export default function SunburstChart() {
         const height = width;
         const radius = width / 8;
 
-        const categoryColors = {
-            Aviation: "#1D1310",
-            Complementary: "#3F312A",
-            Direct: "#564334",
-            Groups: "#2C5357",
-            "Offline TA/TO": "#587570",
-            "Online TA": "#5A848A",
-            Undefined: "#A39986",
-            Corporate: "#294944",
-        };
-
         // Clear any existing SVG when component mounts
         d3.select(containerRef.current).select("svg").remove();
 
@@ -130,7 +119,6 @@ export default function SunburstChart() {
             .style("cursor", "pointer")
             .on("click", clicked);
 
-        const format = d3.format(",d");
         path.append("title").text((d) => {
             const percentage = ((d.value / root.value) * 100).toFixed(2); // Calculate percentage
             return `${d
