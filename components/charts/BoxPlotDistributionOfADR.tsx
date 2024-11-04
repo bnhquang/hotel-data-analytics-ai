@@ -4,7 +4,12 @@ import * as echarts from "echarts";
 const BoxPlotDistributionOfADR: React.FC = () => {
     // Reference to the chart container
     const chartRef = useRef<HTMLDivElement | null>(null);
-    const [data, setData] = useState([]);
+    interface DataItem {
+        adr: number;
+        marketSegment: string;
+    }
+
+    const [data, setData] = useState<DataItem[]>([]);
 
     useEffect(() => {
         const fetchData = async () => {
