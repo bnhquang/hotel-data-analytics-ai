@@ -2,26 +2,32 @@
     "graphs": [
         {
             "title": "Home Country of Guests",
+            "api_endpoint": "/get_country_of_origin",
             "content": "<ul><li><strong>With 41%</strong>, Portugal is the largest contributor to the hotel’s customer base, suggesting that most of the resources (including food, decoration styles, etc.) should be tailored to the Portuguese tastes.</li><li><strong>The United Kingdom (10%), France (9%) and Spain (7%)</strong> are the largest foreign markets, suggesting potential areas for targeted marketing or promotions.</li><li>Germany, Italy, and Ireland, though not making up a very large proportion, still represent the 3rd largest group and may still be considered for secondary marketing efforts.</li></ul>"
         },
         {
             "title": "Sunburst Chart of Market Segment, Reservation Status and Customer Type",
+            "api_endpoint": "/get_hierarchy_sunburst",
             "content": "<ul><li><strong>\"Online TA\"</strong> is the largest segment (47.31%) &mdash; it is highly important to maintain a good relationship with online travel agencies, providing them with updated photos, reviews, and targeted promotions.</li><li>Most segments, including <strong>\"Online TA,\" \"Offline TA/TO,\" and \"Direct,\"</strong> have a large proportion of guests who proceed to \"Check-Out\" &mdash; monitor guest satisfaction in those segments to increase customer loyalty and encourage repeated booking.</li><li><strong>\"Groups\"</strong> is the only segment that has more customers cancelling than checking out &mdash; consider implementing prepayment or deposit requirements for group bookings to reduce last-minute cancellations.</li></ul>"
         },
         {
             "title": "Average Number of Hotel Guests per Month",
+            "api_endpoint": "/average_guests_per_month",
             "content": "<ul><li><strong>Peak Months:</strong> The City Hotel sees the highest average number of guests in May (2289.5), September (2145), and October (2168.5) &mdash; increase marketing efforts and offer packages just before these months to maximize occupancy.</li><li>Surprisingly, the City Hotel experiences a drop in guest numbers during the summer &mdash; develop summer promotions to attract guests during these months, and research local competition or seasonal preferences to understand why this might be.</li><li>The lowest guest numbers occur in January (1127) and December (1196), indicating reduced demand during the winter months, which is common for many hotels &mdash; no specific action needed.</li><li>Although there are some ups and downs for the resort hotel, its guest numbers remain relatively stable throughout the year &mdash; maintain consistent service offerings and possibly promote long-term stay options.</li></ul>"
         },
         {
             "title": "Room Price per Night and per Person by Month",
+            "api_endpoint": "/average_price_by_month",
             "content": "<ul><li>City Hotel's price peaks in May, which corresponds to the peak in demand during the same month. <strong>This alignment makes sense</strong> and suggests pricing is well-aligned with demand here.</li><li>However, demand in March is higher than April, yet the price in March is lower. Similarly, demand in September is higher than October, but the price is lower in March. <strong>Consider adjusting prices to better align with these demand fluctuations.</strong></li></ul>"
         },
         {
             "title": "Length of Stay By Month",
+            "api_endpoint": "/length_of_stay_distribution",
             "content": "<ul><li><strong>City Hotel:</strong> A high percentage of guests stay for 1 to 3 nights (up to 69.34%) &mdash; consider creating special weekend packages that offer added value, such as discounts on three-night stays and beyond. Also, focus on offering express services (e.g., fast check-in/out, easy luggage storage, and on-demand local transportation) to enhance convenience for short-stay guests.</li><li><strong>Resort Hotel:</strong> Short stays from 1-2 nights are still high, so consider offering similar packages to attract longer stays. A notable 15.33% of customers stay exactly 7 days &mdash; capitalize on this by adding complimentary activities like spa or meal discounts.</li><li>Since longer stays are less common for both hotels, focus on promoting short stays and possibly introducing a “stay longer, save more” initiative to encourage guests to extend their visits.</li></ul>"
         },
         {
             "title": "Distribution of ADR by Market Segment",
+            "api_endpoint": "/dist_of_adr_by_market_segment",
             "content": "<ul><li><strong>Aviation:</strong> Limited range in ADR, indicating minimal flexibility for adjusting price in this segment.</li><li><strong>Corporate, Groups, Offline TA/TO, and Online TA:</strong> A wider spending range indicates a varied budget across customers. Offer tiered packages to cater to both budget-conscious and premium customers.</li><li><strong>Direct Bookings:</strong> This segment has the highest upper fence and the widest range, suggesting a significant potential for dynamic pricing. Implementing dynamic pricing can help capitalize on high-demand periods and maximize revenue.</li></ul>"
         }
     ]

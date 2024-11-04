@@ -88,6 +88,8 @@ export default function Dashboard() {
                                     }
                                     title="Personal Interpretation"
                                     content={graph.content}
+                                    endPoint={graph.api_endpoint}
+                                    chartTitle={graph.title}
                                 />
                             </div>
                         </CardHeader>
