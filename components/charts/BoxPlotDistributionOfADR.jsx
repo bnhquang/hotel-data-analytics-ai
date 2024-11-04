@@ -3,7 +3,7 @@ import * as echarts from "echarts";
 
 const BoxPlotDistributionOfADR = () => {
     // Reference to the chart container
-    const chartRef = (useRef < HTMLDivElement) | (null > null);
+    const chartRef = useRef(null);
 
     const [data, setData] = useState([]);
 
