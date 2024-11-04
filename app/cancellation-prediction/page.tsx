@@ -14,7 +14,7 @@ import {
 
 export default function CancellationPrediction() {
     const [fields, setFields] = useState("");
-    const [prediction, setPrediction] = useState(null); // State for storing the prediction result
+    const [prediction, setPrediction] = useState<string | null>(null); // State for storing the prediction result
     const [loading, setLoading] = useState(false); // Loading state for the API call
 
     const handleSubmit = async (e: React.FormEvent) => {
