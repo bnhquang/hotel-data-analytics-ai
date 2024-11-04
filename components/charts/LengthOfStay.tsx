@@ -6,13 +6,10 @@ import {
     XAxis,
     YAxis,
     CartesianGrid,
-    ,
     Legend,
     ResponsiveContainer,
 } from "recharts";
-import {
-    ChartTooltip,
-} from "@/components/ui/chart";
+import { ChartTooltip } from "@/components/ui/chart";
 import { useEffect, useState } from "react";
 
 export default function LengthOfStay() {
