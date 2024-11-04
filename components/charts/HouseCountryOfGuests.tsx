@@ -19,7 +19,14 @@ const COLORS = [
     "#294944",
 ];
 
-const CustomizedContent = (props) => {
+const CustomizedContent = (props: {
+    depth?: number;
+    x?: number;
+    y?: number;
+    width?: number;
+    height?: number;
+    name?: string;
+}) => {
     const { depth, x, y, width, height, name } = props;
 
     return (
