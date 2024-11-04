@@ -13,7 +13,7 @@ import interpretations from "@/public/chartInterpretations.json";
 import { Button } from "@/components/ui/button";
 
 export default function Dashboard() {
-    const [showPieChart, setShowPieChart] = useState(true);
+    const [showPieChart, setShowPieChart] = useState(false);
     const [dialogOpenState, setDialogOpenState] = useState(
         Array(interpretations.graphs.length).fill(false)
     );
