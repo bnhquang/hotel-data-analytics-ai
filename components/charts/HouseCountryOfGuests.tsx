@@ -37,15 +37,15 @@ const CustomizedContent = (props: {
                 width={width}
                 height={height}
                 style={{
-                    fill: COLORS[depth % COLORS.length], // Use color based on depth
+                    fill: COLORS[(depth ?? 0) % COLORS.length], // Use color based on depth
                     stroke: "#fff",
                     strokeWidth: 2,
                 }}
             />
-            {width > 50 && height > 20 ? (
+            {(width ?? 0) > 50 && (height ?? 0) > 20 ? (
                 <text
-                    x={x + width / 2}
-                    y={y + height / 2}
+                    x={(x ?? 0) + (width ?? 0) / 2}
+                    y={(y ?? 0) + (height ?? 0) / 2}
                     textAnchor="middle"
                     fill="#fff"
                     fontSize={14}
