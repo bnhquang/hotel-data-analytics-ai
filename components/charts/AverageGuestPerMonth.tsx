@@ -27,7 +27,7 @@ export default function AverageGuestPerMonth() {
         const fetchData = async () => {
             try {
                 const response = await fetch(
-                    "http://localhost:8000/average_guests_per_month"
+                    `${process.env.NEXT_PUBLIC_FAST_API_URL}/average_guests_per_month`
                 );
                 if (!response.ok) {
                     throw new Error("Failed to fetch data");

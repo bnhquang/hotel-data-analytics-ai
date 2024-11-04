@@ -27,7 +27,7 @@ export default function AveragePriceByMonth() {
         const fetchData = async () => {
             try {
                 const response = await fetch(
-                    "http://localhost:8000/average_price_by_month"
+                    `${process.env.NEXT_PUBLIC_FAST_API_URL}/average_price_by_month`
                 );
                 if (!response.ok) {
                     throw new Error("Failed to fetch data");

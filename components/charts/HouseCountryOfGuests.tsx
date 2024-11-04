@@ -64,7 +64,7 @@ const HouseCountryOfGuests: React.FC<HouseCountryOfGuestsProps> = ({
         const fetchData = async () => {
             try {
                 const response = await fetch(
-                    "http://localhost:8000/get_country_of_origin"
+                    `${process.env.NEXT_PUBLIC_FAST_API_URL}/get_country_of_origin`
                 );
                 if (!response.ok) {
                     throw new Error("Failed to fetch data");

@@ -57,7 +57,7 @@ function InterpretationDialog({
             try {
                 console.log(endPoint);
                 const response = await fetch(
-                    `http://localhost:8000${endPoint}`
+                    `${process.env.NEXT_PUBLIC_FAST_API_URL}${endPoint}`
                 );
                 if (!response.ok) {
                     throw new Error("Failed to fetch data");

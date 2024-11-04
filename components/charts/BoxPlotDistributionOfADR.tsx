@@ -10,7 +10,7 @@ const BoxPlotDistributionOfADR: React.FC = () => {
         const fetchData = async () => {
             try {
                 const response = await fetch(
-                    "http://localhost:8000/dist_of_adr_by_market_segment"
+                    `${process.env.NEXT_PUBLIC_FAST_API_URL}/dist_of_adr_by_market_segment`
                 );
                 if (!response.ok) {
                     throw new Error("Failed to fetch data");

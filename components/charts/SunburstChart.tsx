@@ -12,7 +12,7 @@ export default function SunburstChart() {
         const fetchData = async () => {
             try {
                 const response = await fetch(
-                    "http://localhost:8000/get_hierarchy_sunburst"
+                    `${process.env.NEXT_PUBLIC_FAST_API_URL}/get_hierarchy_sunburst`
                 );
                 if (!response.ok) {
                     throw new Error("Failed to fetch data");
