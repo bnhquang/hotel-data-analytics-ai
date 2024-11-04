@@ -13,6 +13,10 @@ const BoxPlotDistributionOfADR = () => {
                 const response = await fetch(
                     `${process.env.NEXT_PUBLIC_FAST_API_URL}/dist_of_adr_by_market_segment`
                 );
+                console.log(
+                    "calling",
+                    `${process.env.NEXT_PUBLIC_FAST_API_URL}/dist_of_adr_by_market_segment`
+                );
                 if (!response.ok) {
                     throw new Error("Failed to fetch data");
                 }
