@@ -18,7 +18,7 @@ export default function Dashboard() {
         Array(interpretations.graphs.length).fill(false)
     );
 
-    const handleDialogOpenChange = (index, isOpen) => {
+    const handleDialogOpenChange = (index: number, isOpen: boolean) => {
         setDialogOpenState((prev) => {
             const newState = [...prev];
             newState[index] = isOpen;
@@ -26,7 +26,7 @@ export default function Dashboard() {
         });
     };
 
-    const renderChart = (index) => {
+    const renderChart = (index: number) => {
         switch (index) {
             case 0:
                 return <HouseCountryOfGuests showPieChart={showPieChart} />;
